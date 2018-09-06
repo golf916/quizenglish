@@ -1,0 +1,79 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+  application:
+    name: QUIZ-SERVICE
+  thymeleaf:
+    prefix: classpath:/templates/
+        
+server: 
+  port: 9909
+    
+mybatis:
+  typeAliasesPackage: com.weiqi.model
+  mapperLocations: classpath:mybatis/*.xml
+             
+---
+#开发配置
+spring:
+  profiles: dev
+  datasource:
+    name: quizenglish
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/quizenglish?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      username: root
+      password: maydayrrrpwd
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20 
+  
+
+---
+#生产配置
+spring:
+  profiles: prod
+  datasource:
+    name: rrr_user
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://mysql.location:3306/vtrade?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false
+      username: vtradejava
+      password: c8837b23ff8aaa8a2dde915473ce0991
+      initial-size: 1
+      min-idle: 1
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 20 
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+        
+redis:
+  database: 0
+  host: 127.0.0.1
+  port: 6379
+  

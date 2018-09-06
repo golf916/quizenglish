@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>Question List</title>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <h5> Question List </h5>
+
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>Question List</strong>
+        </legend>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Content</th>
+            <th>Type</th>
+            <th>Level</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${questionList}">
+            <th scope="row" th:text="${question.id}"></th>
+            <td th:text="${question.content}"></td>
+            <td th:text="${question.type}"></td>
+            <td th:text="${question.level}"></td>
+            <td><a th:href="@{/question/update/{questionId}(questionId=${question.id})}" th:text="${question.id}"></a></td>
+            <td><a class="btn btn-danger" th:href="@{/question/delete/{questionId}(questionId=${question.id})}">DELETE</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div><a class="btn btn-primary" href="/question/create" role="button">New Question</a></div>
+</div>
+
+</body>
+</html>

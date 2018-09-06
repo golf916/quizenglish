@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>登录页面</title>
+</head>
+<body>
+<div class="contentDiv">
+	<form th:action="@{/deal-login}" method="post" class="form-horizontal">
+		
+		<div class="form-group">
+            <label for="user_name" class="col-sm-2 control-label">用户名:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" name="username" th:value="${user.username}"
+                       th:field="*{user.username}"/>
+            </div>
+        </div>
+        
+		<div class="form-group">
+            <label for="user_password" class="col-sm-2 control-label">密码:</label>
+            <div class="col-xs-4">
+                <input type="password" class="form-control" name="password" th:value="${user.password}"
+                       th:field="*{user.password}"/>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+            </div>
+        </div>
+
+</form>
+</div>
+</body>
+</html>
