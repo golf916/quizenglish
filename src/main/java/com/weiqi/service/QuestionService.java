@@ -8,11 +8,15 @@ public interface QuestionService {
 
 	void insertByQuestion(Question question);
 	
+	List<Question> getAllQuestion();
+	
 	List<Question> findAll();
-//	
-//	User update(User user);
-//	
-//	User delete(Long id);
-//	
-//	User findById(Long id);
+	
+	void update(Question question);
+	
+	void delete(Integer id);
+	
+	Question findById(Integer id);
+
+	Question findQAById(Integer questionId);
 }

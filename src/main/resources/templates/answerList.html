@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon"/>
+    <meta charset="UTF-8"/>
+    <title>Answer List</title>
+</head>
+
+<body>
+
+<div class="contentDiv">
+
+    <h5> Answer List </h5>
+    <p class="lead">${question.content}</p>
+
+    <table class="table table-hover table-condensed">
+        <legend>
+            <strong>Answer List</strong>
+        </legend>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Content</th>
+            <th>UPDATE</th>
+            <th>DELETE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="answer : ${answerList}">
+            <th scope="row" th:text="${answer.id}"></th>
+            <td th:text="${answer.content}"></td>
+            <td><a class="btn btn-info" th:href="@{/answer/update/{answerId}(answerId=${answer.id})}">UPDATE</a></td>
+            <td><a class="btn btn-danger" th:href="@{/answer/delete/{answerId}(answerId=${answer.id})}">DELETE</a></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div><a class="btn btn-primary" href="/answer/create" role="button">New Answer</a></div>
+</div>
+
+</body>
+</html>

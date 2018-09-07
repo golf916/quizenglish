@@ -1,4 +1,4 @@
-package com.weiqi.model;
+package com.weiqi.model.vo;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -7,7 +7,7 @@ import java.util.Date;
  * t_answer
  * @author 
  */
-public class Answer implements Serializable {
+public class AnswerVo implements Serializable {
     private Integer id;
 
     /**
@@ -24,8 +24,6 @@ public class Answer implements Serializable {
      * 创建时间
      */
     private Date createtime;
-    
-    private Question question;
 
     private static final long serialVersionUID = 1L;
 
@@ -61,15 +59,7 @@ public class Answer implements Serializable {
         this.createtime = createtime;
     }
 
-    public Question getQuestion() {
-		return question;
-	}
-
-	public void setQuestion(Question question) {
-		this.question = question;
-	}
-
-	@Override
+    @Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;
@@ -80,7 +70,7 @@ public class Answer implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Answer other = (Answer) that;
+        AnswerVo other = (AnswerVo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getQuestionId() == null ? other.getQuestionId() == null : this.getQuestionId().equals(other.getQuestionId()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))

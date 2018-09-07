@@ -20,23 +20,33 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 	
 	@Override
+	public List<Question> getAllQuestion(){
+		return questionDAO.getAllQuestion();
+	}
+	
+	@Override
 	public List<Question> findAll(){
 		return questionDAO.listQuestion();
 	}
-//	
-//	@Override
-//	public User update(User user){
-//		
-//	}
-//	
-//	@Override
-//	public User delete(Long id){
-//		
-//	}
-//	
-//	@Override
-//	public User findById(Long id){
-//		return userDAO.selectByPrimaryKey(id);
-//	}
+	
+	@Override
+	public void update(Question question){
+		questionDAO.updateByPrimaryKey(question);
+	}
+	
+	@Override
+	public void delete(Integer id){
+		questionDAO.deleteByPrimaryKey(id);
+	}
+	
+	@Override
+	public Question findById(Integer id){
+		return questionDAO.selectByPrimaryKey(id);
+	}
+
+	@Override
+	public Question findQAById(Integer questionId) {
+		return questionDAO.findQAById(questionId);
+	}
 	
 }

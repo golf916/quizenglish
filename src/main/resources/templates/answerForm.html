@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/default.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>Add Answer</title>
+</head>
+<body>
+<div class="contentDiv">
+	<form th:action="@{/answer/create}" method="post" class="form-horizontal">
+		
+		<input type="hidden" name="questionId" th:value="${question.id}"/>
+		
+		<input type="hidden" name="id" th:value="${answer.id}"/>
+		
+		<div class="form-group">
+            <label for="question_content" class="col-sm-2 control-label">Question:</label>
+            <div class="col-xs-4" th:text="${question.content}">
+            </div>
+        </div>
+        
+		<div class="form-group">
+            <label for="answer_content" class="col-sm-2 control-label">Answer:</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" name="content" th:value="${answer.content}"
+                       th:field="*{answer.content}"/>
+            </div>
+        </div>
+                       
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input class="btn btn-primary" type="submit" value="提交"/>&nbsp;&nbsp;
+            </div>
+        </div>
+
+</form>
+</div>
+</body>
+</html>

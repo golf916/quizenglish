@@ -2,6 +2,7 @@ package com.weiqi.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * t_question
@@ -29,6 +30,8 @@ public class Question implements Serializable {
      * 创建时间
      */
     private Date createtime;
+    
+    private List<Answer> answers; 
 
     private static final long serialVersionUID = 1L;
 
@@ -72,7 +75,15 @@ public class Question implements Serializable {
         this.createtime = createtime;
     }
 
-    @Override
+    public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
+	}
+
+	@Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;

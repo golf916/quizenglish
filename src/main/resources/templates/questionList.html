@@ -25,15 +25,19 @@
             <th>Content</th>
             <th>Type</th>
             <th>Level</th>
+            <th>ANSWER</th>
+            <th>UPDATE</th>
+            <th>DELETE</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="question : ${questionList}">
             <th scope="row" th:text="${question.id}"></th>
-            <td th:text="${question.content}"></td>
+            <td th:text="${question.content}"><a th:href="@{/question/view/{id}(id=${question.id})}"></a></td>
             <td th:text="${question.type}"></td>
             <td th:text="${question.level}"></td>
-            <td><a th:href="@{/question/update/{questionId}(questionId=${question.id})}" th:text="${question.id}"></a></td>
+            <td><a class="btn btn-default" th:href="@{/answer/create/{questionId}(questionId=${question.id})}">ANSWER</a></td>
+            <td><a class="btn btn-info" th:href="@{/question/update/{questionId}(questionId=${question.id})}">UPDATE</a></td>
             <td><a class="btn btn-danger" th:href="@{/question/delete/{questionId}(questionId=${question.id})}">DELETE</a></td>
         </tr>
         </tbody>

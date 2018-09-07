@@ -79,4 +79,16 @@
       createTime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="listAnswer" resultType="com.weiqi.model.Answer" resultMap="BaseResultMap">
+		select * from t_answer q 
+		<where>
+			1=1
+			<if test="id != null and id != ''"> AND q.id = #{id,jdbcType=INTEGER}</if>
+			<if test="content != null and content != ''"> AND q.content = #{content,jdbcType=VARCHAR}</if>
+			<if test="questionId != null and questionId != ''"> AND q.question_id = #{questionId,jdbcType=INTEGER}</if>
+			<if test="createtime != null and createtime != ''"> AND q.createtime = #{createtime,jdbcType=TIMESTAMP}</if>
+		</where>
+
+	</select>
 </mapper>

@@ -11,6 +11,8 @@
 <div class="contentDiv">
 	<form th:action="@{/question/create}" method="post" class="form-horizontal">
 		
+		<input type="hidden" name="id" th:value="${question.id}"/>
+		
 		<div class="form-group">
             <label for="question_content" class="col-sm-2 control-label">Question:</label>
             <div class="col-xs-4">

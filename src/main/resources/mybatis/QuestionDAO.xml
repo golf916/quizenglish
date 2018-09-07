@@ -8,6 +8,55 @@
     <result column="level" jdbcType="VARCHAR" property="level" />
     <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
   </resultMap>
+	
+	<resultMap type="com.weiqi.model.Question" id="questionMaps">
+		<id column="id" property="id"/>
+		<result column="content" property="content"/>
+		<result column="type" property="type"/>
+		<result column="level" property="level"/>
+		<result column="createTime" property="createtime" />
+		<collection property="answers" ofType="com.weiqi.model.Answer" select="getAnswerList" column="id">
+		</collection>
+	</resultMap>
+	<!-- 
+	<resultMap type="com.weiqi.model.Question" id="questionResult">
+		<id column="id" property="id"/>
+		<result column="content" property="content"/>
+		<result column="type" property="type"/>
+		<result column="level" property="level"/>
+		<result column="createTime" property="createtime" />
+		<collection property="answers" ofType="com.weiqi.model.Answer" >
+			<id column="id" property="id"/>
+			<result column="content" property="content"/>
+			<result column="createTime" property="createtime" />
+		</collection>
+	</resultMap>	
+	 -->
+	<select id="getAllQuestion" parameterType="com.weiqi.model.Question" resultMap="questionMaps">
+		SELECT
+			q.id, q.content, q.type, q.level
+		FROM
+			t_question q
+	</select>
+	
+	<select id="getAnswerList" parameterType="int" resultType="com.weiqi.model.Answer">
+		SELECT 
+			a.id, a.content, a.createTime
+		FROM t_answer a
+		WHERE a.question_id = #{id}
+	</select>
+	
+	<select id="findQAById" parameterType="java.lang.Integer" resultType="com.weiqi.model.Question" resultMap="questionMaps">
+		SELECT
+			q.id, q.content, q.type, q.level
+		FROM
+			t_question q
+		<where>
+			q.id = #{id}
+		</where>
+
+	</select>
+	
   <sql id="Base_Column_List">
     id, content, `type`, `level`, createTime
   </sql>
@@ -103,4 +152,6 @@
 		</where>
 
 	</select>
+	
+
 </mapper>
